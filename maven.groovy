@@ -19,6 +19,7 @@ def call(){
       sh "sleep 20 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
   stage("Paso 4: Subir Nexus"){
+      sh "sleep 1"
     //   nexusPublisher nexusInstanceId: 'nexus',
     //   nexusRepositoryId: 'devops-usach-nexus',
     //   packages: [
