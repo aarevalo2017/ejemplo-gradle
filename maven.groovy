@@ -15,8 +15,8 @@ def call(){
           sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=maven-gradle -Dsonar.java.binaries=build'
       }
   }
-  stage("Paso 3: Curl Springboot Gradle sleep 20"){
-      sh "gradle bootRun&"
+  stage("Paso 3: Curl Springboot Maven sleep 20"){
+      sh "mvn spring-boot:run&"
       sh "sleep 20 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
   stage("Paso 4: Subir Nexus"){
