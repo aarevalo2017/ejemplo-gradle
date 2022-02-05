@@ -15,7 +15,7 @@ pipeline {
         stage("Pipeline"){
             steps {
                 script{
-                    sh "git diff ${GIT_COMMIT} main"
+                    sh "git diff main"
                     // def ejecucion = load "${params.compileTool}.groovy"
                     // ejecucion.call()
                 }
