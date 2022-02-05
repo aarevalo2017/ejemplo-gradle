@@ -48,8 +48,5 @@ def call(){
   stage("Paso 7: Testear Artefacto - Dormir(Esperar 20sg) "){
       sh "sleep 20 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
   }
-  stage("Paso 8: Fail para validar mensaje en Slack"){
-      sh "asdf"
-  }
 }
 return this;

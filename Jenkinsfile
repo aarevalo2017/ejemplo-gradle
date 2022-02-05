@@ -15,18 +15,19 @@ pipeline {
         stage("Pipeline"){
             steps {
                 script{
-                    def ejecucion = load "${params.compileTool}.groovy"
-                    ejecucion.call()
+                    sh "git diff ${GIT_PREVIOUS_COMMIT}"
+                    // def ejecucion = load "${params.compileTool}.groovy"
+                    // ejecucion.call()
                 }
             }
-            post{
-                success{
-                    slackSend color: 'good', message: "[Alejandro Arévalo] [${JOB_NAME}] [${BUILD_TAG}] Ejecucion Exitosa", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'slack-token'
-                }
-                failure{
-                    slackSend color: 'danger', message: "[Alejandro Arévalo] [${env.JOB_NAME}] [${BUILD_TAG}] Ejecucion fallida en stage [${env.TAREA}]", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'slack-token'
-                }
-            }
+            // post{
+            //     success{
+            //         slackSend color: 'good', message: "[Alejandro Arévalo] [${JOB_NAME}] [${BUILD_TAG}] Ejecucion Exitosa", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'slack-token'
+            //     }
+            //     failure{
+            //         slackSend color: 'danger', message: "[Alejandro Arévalo] [${env.JOB_NAME}] [${BUILD_TAG}] Ejecucion fallida en stage [${env.TAREA}]", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'slack-token'
+            //     }
+            // }
         }
     }
 }
