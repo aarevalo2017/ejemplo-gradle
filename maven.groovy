@@ -22,21 +22,41 @@ def call(){
       nexusPublisher nexusInstanceId: 'nexus',
       nexusRepositoryId: 'devops-usach-nexus',
       packages: [
-          [$class: 'MavenPackage',
+          [
+              $class: 'MavenPackage',
               mavenAssetList: [
-                  [classifier: '',
-                  extension: 'jar',
-                  filePath: 'build/DevOpsUsach2020-0.0.1.jar'
-              ]
-          ],
-              mavenCoordinate: [
-                  artifactId: 'DevOpsUsach2020',
-                  groupId: 'com.devopsusach2020',
-                  packaging: 'jar',
-                  version: '0.0.1'
-              ]
-          ]
-      ]
+                  [
+                      classifier: '',
+                      extension: '',
+                      filePath: 'build/DevOpsUsach2020-0.0.1.jar'
+                    ]
+                ],
+                mavenCoordinate: [
+                    artifactId: 'DevOpsUsach2020',
+                    groupId: 'com.devopsusach2020',
+                    packaging: 'jar',
+                    version: '0.0.1-AS-CODE-NEW'
+                ]
+            ]
+        ]
+    //   nexusPublisher nexusInstanceId: 'nexus',
+    //   nexusRepositoryId: 'devops-usach-nexus',
+    //   packages: [
+    //       [$class: 'MavenPackage',
+    //           mavenAssetList: [
+    //               [classifier: '',
+    //               extension: 'jar',
+    //               filePath: 'build/DevOpsUsach2020-0.0.1.jar'
+    //           ]
+    //       ],
+    //           mavenCoordinate: [
+    //               artifactId: 'DevOpsUsach2020',
+    //               groupId: 'com.devopsusach2020',
+    //               packaging: 'jar',
+    //               version: '0.0.1'
+    //           ]
+    //       ]
+    //   ]
   }
 //   stage("Paso 5: Descargar Nexus"){
 //       sh ' curl -X GET -u $NEXUS_USER:$NEXUS_PASSWORD "http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar" -O'
