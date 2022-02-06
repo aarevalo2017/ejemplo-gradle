@@ -5,8 +5,6 @@
 */
 def call(){
   stage("Paso 5: Descargar Nexus"){
-      sh "echo $NEXUS_USERNAME"
-      sh "echo $NEXUS_PASSWORD"
       sh "curl -X GET -u $NEXUS_USERNAME:$NEXUS_PASSWORD 'http://nexus:8081/repository/devops-usach-nexus/com/devopsusach2020/DevOpsUsach2020/0.1.2/DevOpsUsach2020-0.1.2.jar' -O"
   }
   stage("Paso 6: Levantar Artefacto Jar"){
