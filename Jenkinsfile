@@ -16,6 +16,7 @@ pipeline {
             steps {
                 script{
                     def branch = env.GIT_BRANCH
+                    sh "echo $branch"
                     if(branch == "develop" || branch.startsWith("feature-")){
                         pipeline_ci.call()
                     }else if(branch.startsWith("realease-")){
