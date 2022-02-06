@@ -21,7 +21,7 @@ pipeline {
                         figlet "Integración Continua"
                         def ejecucion = load "pipelineci.groovy"
                         ejecucion.call()
-                    }else if(branch.startsWith("realease-")){
+                    } else if(branch.startsWith("release-")){
                         figlet "Despliegue Continuo"
                         def ejecucion = load "pipelinecd.groovy"
                         ejecucion.call()
