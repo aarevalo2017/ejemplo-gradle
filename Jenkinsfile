@@ -18,9 +18,9 @@ pipeline {
                     def branch = env.GIT_BRANCH.split('/')[1]
                     sh "echo $branch"
                     if(branch == "develop" || branch.startsWith("feature-")){
-                        pipeline_ci.call()
+                        pipelineci.call()
                     }else if(branch.startsWith("realease-")){
-                        pipeline_cd.call();
+                        pipelinecd.call();
                     }
                 }
             }
