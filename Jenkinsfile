@@ -15,7 +15,7 @@ pipeline {
         stage("Pipeline"){
             steps {
                 script{
-                    def branch = env.GIT_BRANCH
+                    def branch = env.GIT_BRANCH.split('/')[1]
                     sh "echo $branch"
                     if(branch == "develop" || branch.startsWith("feature-")){
                         pipeline_ci.call()
