@@ -18,11 +18,11 @@ pipeline {
                     def branch = env.GIT_BRANCH.split('/')[1]
                     sh "echo $branch"
                     if(branch == "develop" || branch.startsWith("feature-")){
-                        figlet: "Integración Continua"
+                        figlet "Integración Continua"
                         def ejecucion = load "pipelineci.groovy"
                         ejecucion.call()
                     }else if(branch.startsWith("realease-")){
-                        figlet: "Despliegue Continuo"
+                        figlet "Despliegue Continuo"
                         def ejecucion = load "pipelinecd.groovy"
                         ejecucion.call()
                     }
