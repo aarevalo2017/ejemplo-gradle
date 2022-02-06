@@ -15,19 +15,14 @@ pipeline {
         stage("Pipeline"){
             steps {
                 script{
-                    sh "git diff origin/main"
-                    // def ejecucion = load "${params.compileTool}.groovy"
-                    // ejecucion.call()
+                    def branch = env.GIT_BRANCH
+                    if(branch == "develop" || branch.startsWith("feature-")){
+                        pipeline_ci.call()
+                    }else if(branch.startsWith("realease-")){
+                        pipeline_cd.call();
+                    }
                 }
             }
-            // post{
-            //     success{
-            //         slackSend color: 'good', message: "[Alejandro Arévalo] [${JOB_NAME}] [${BUILD_TAG}] Ejecucion Exitosa", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'slack-token'
-            //     }
-            //     failure{
-            //         slackSend color: 'danger', message: "[Alejandro Arévalo] [${env.JOB_NAME}] [${BUILD_TAG}] Ejecucion fallida en stage [${env.TAREA}]", teamDomain: 'dipdevopsusac-tr94431', tokenCredentialId: 'slack-token'
-            //     }
-            // }
         }
     }
 }
